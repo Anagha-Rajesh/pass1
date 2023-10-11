@@ -20,7 +20,7 @@ git branch -M main
 git push -uf origin main
 ```
 
-## Integrate with your tools
+## Integrate with your tool anagha 
 
 - [ ] [Set up project integrations](https://gitlab.com/anagha-rajesh/git-start-up/-/settings/integrations)
 
