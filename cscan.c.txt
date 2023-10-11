@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+  int n,i,j,head,totd=0,lb,ub,temp,d,current;
+  printf("enter the no of requests");
+  scanf("%d",&n);
+  int request[n];
+  printf("enter the requests in sequence");
+  for(i=0;i<n;i++)
+    scanf("%d",&request[i]);
+printf("enter the head");
+  scanf("%d",&head);
+  printf("enter the lower boundary");
+  scanf("%d",&lb);
+  printf("enter the upper boundary");
+  scanf("%d",&ub);
+  for(i=0;i<n;i++)
+    for(j=0;j<n-i-1;j++)
+      if(request[j]>request[j+1])
+      {
+       temp=request[j];
+        request[j]=request[j+1];
+        request[j+1]=temp;
+      }
+  printf("enter the direction ...0 for left and ..1 for right");
+  scanf("%d",&d);
+  if(d==0)
+  {
+    printf("%d",head);
+    for(i=0;i<n;i++)
+      {
+        if(request[i]>=head)
+        {
+          break;
+        }
+      }
+        for(j=i-1;j>=0;j--)  
+          {
+          current=request[j];
+          printf("->%d",current);
+          totd+=abs(current-head);
+          head=current;
+          }
+    printf("->%d",lb);
+    totd+=abs(lb-head);
+    head=lb;
+        printf("->%d",ub);
+    totd+=abs(ub-head);
+    head=ub;
+    for(j=n;j>=i;j--)
+      {
+        current=request[j];
+          printf("->%d",current);
+          totd+=abs(current-head);
+          head=current;  
+          }
+  }
+  else
+  {
+    printf("%d",head);
+    for(i=0;i<n;i++)
+      {
+        if(request[i]>head)
+        {
+          break;
+        }
+      }
+    for(j=i;j<n;j++)
+      {
+        current=request[j];
+          printf("->%d",current);
+          totd+=abs(current-head);
+          head=current;  
+          }
+    printf("->%d",ub);
+    totd+=abs(ub-head);
+    head=ub;
+    printf("->%d",lb);
+    totd+=abs(lb-head);
+    head=lb;
+    for(j=0;j<i;j++)  
+          {
+          current=request[j];
+          printf("->%d",current);
+          totd+=abs(current-head);
+          head=current;
+          }
+    
+  }
+  printf("totaldistance=%d",totd);
+  
+}
